@@ -30,25 +30,57 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+    # Package utama Flutter, WAJIB ada di setiap project Flutter
+    # Berisi semua widget dasar seperti Text, Row, Column, Scaffold, dll
+    # 'sdk: flutter' artinya diambil langsung dari Flutter SDK, bukan dari pub.dev
 
   cupertino_icons: ^1.0.8
+    # Package ikon bergaya iOS (Apple/Cupertino)
+    # Digunakan saat pakai CupertinoIcons.namaIkon di dalam widget
+    # Contoh: CupertinoIcons.home, CupertinoIcons.search
+    # Tanda ^ artinya boleh update otomatis selama masih versi 1.x.x
 
   firebase_core: ^3.15.2
+    # Package WAJIB pertama kali sebelum menggunakan layanan Firebase apapun
+    # Bertugas menginisialisasi koneksi antara aplikasi Flutter dengan project Firebase
+    # Harus dipanggil Firebase.initializeApp() di main.dart sebelum runApp()
+    # Tanpa package ini, semua package Firebase lainnya tidak akan bisa berjalan
+
   cloud_firestore: ^5.4.4
+    # Package untuk menggunakan database NoSQL Firestore milik Firebase
+    # Digunakan untuk operasi CRUD: Create, Read, Update, Delete data
+    # Mendukung realtime listener (StreamBuilder) — data otomatis update tanpa refresh
+    # Contoh penggunaan: FirebaseFirestore.instance.collection('users').get()
+    # Dipakai di project ini untuk menyimpan data kontak dan kategori
+
   firebase_auth: ^5.7.0
+    # Package untuk sistem autentikasi/login menggunakan Firebase
+    # Mendukung login dengan: Email & Password, Google, Facebook, Phone, dll
+    # Menyediakan FirebaseAuth.instance.currentUser untuk cek user yang sedang login
+    # Contoh: FirebaseAuth.instance.signInWithEmailAndPassword(...)
+    # Dipakai di project ini untuk mengambil UID pengguna yang sedang aktif
+
   shared_preferences: ^2.2.3
+    # Package untuk menyimpan data kecil secara LOKAL di perangkat pengguna
+    # Cocok untuk menyimpan: status login, pengaturan tema, preferensi pengguna
+    # Data tersimpan dalam format key-value (seperti HashMap/Dictionary)
+    # Data tetap ada meskipun aplikasi ditutup (persistent storage)
+    # Contoh: await prefs.setString('token', 'abc123') / prefs.getString('token')
+    # TIDAK cocok untuk data besar atau data yang butuh relasi antar tabel
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+    # Package khusus untuk membuat unit test dan widget test di Flutter
+    # Hanya aktif saat proses development/pengujian, TIDAK ikut di build production
+    # Berisi fungsi seperti expect(), find(), tester.pump() untuk testing UI
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^6.0.0
+    # Package berisi aturan penulisan kode (linting rules) yang direkomendasikan Flutter
+    # Membantu mendeteksi kode yang buruk, tidak efisien, atau tidak mengikuti standar
+    # Hanya aktif saat development, memberikan peringatan/error di editor (VS Code, Android Studio)
+    # Contoh peringatan: variabel tidak digunakan, tipe data tidak eksplisit, dll
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
