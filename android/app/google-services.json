@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "222368323205",
+    "project_id": "contacta-app-8fecb",
+    "storage_bucket": "contacta-app-8fecb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222368323205:android:b703745499633205de3bec",
+        "android_client_info": {
+          "package_name": "com.example.bikin_crud"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsMg6CUe__fgvOrmDShW-mCEX7hzXDgZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
