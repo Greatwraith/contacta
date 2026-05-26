@@ -1,9 +1,17 @@
 // select_contacts_screen.dart
 // File utama untuk layar pemilihan kontak yang akan dimasukkan ke dalam kategori
 
+//_______________________
+// BAGIAN IMPORT DEPENDENSI | BERFUNGSI SEBAGAI PUSAT UNTUK MENGIMPOR LIBRARY DAN MEMUAT MODUL SISTEM
+//_______________________
+
 import 'package:cloud_firestore/cloud_firestore.dart'; // Import library Firestore untuk database cloud
 import 'package:firebase_auth/firebase_auth.dart'; // Import library Firebase Auth untuk autentikasi pengguna
 import 'package:flutter/material.dart'; // Import library Flutter Material untuk komponen UI
+
+//_______________________
+// BAGIAN CLASS STATEFULWIDGET | BERFUNGSI SEBAGAI DEKLARASI HALAMAN UTAMA DAN MENERIMA PARAMETER KATEGORI
+//_______________________
 
 // Mendefinisikan widget StatefulWidget bernama SelectContactsScreen
 class SelectContactsScreen extends StatefulWidget {
@@ -18,6 +26,10 @@ class SelectContactsScreen extends StatefulWidget {
   State<SelectContactsScreen> createState() =>
       _SelectContactsScreenState(); // Membuat objek state untuk widget ini
 }
+
+//_______________________
+// BAGIAN CLASS STATE & VARIABEL | BERFUNGSI SEBAGAI PENGENDALI DATA, MENYIMPAN STATUS, DAN MENGAKSES DATABASE
+//_______________________
 
 // Class state yang mengelola semua logika dan data layar ini
 class _SelectContactsScreenState
@@ -49,6 +61,10 @@ class _SelectContactsScreenState
           .doc(widget.categoryId) // Menuju dokumen kategori yang dipilih
           .collection('contacts'); // Menuju subkoleksi 'contacts' dalam kategori
 
+  //_______________________
+  // BAGIAN SIKLUS HIDUP WIDGET | BERFUNGSI SEBAGAI PENGATUR INISIALISASI AWAL DAN MEMBERSIHKAN MEMORI SISTEM
+  //_______________________
+
   @override
   void initState() { // Dipanggil pertama kali saat widget dibuat
     super.initState(); // Memanggil initState dari parent class
@@ -61,12 +77,20 @@ class _SelectContactsScreenState
     super.dispose(); // Memanggil dispose dari parent class
   }
 
+  //_______________________
+  // BAGIAN FUNGSI NOTIFIKASI | BERFUNGSI SEBAGAI PENAMPIL PESAN DAN MEMBERIKAN INFORMASI KEPADA PENGGUNA
+  //_______________________
+
   // Fungsi helper untuk menampilkan pesan snackbar di bagian bawah layar
   void _showSnackbar(String message, Color color) {
     ScaffoldMessenger.of(context).showSnackBar( // Menggunakan ScaffoldMessenger untuk tampilkan snackbar
       SnackBar(content: Text(message), backgroundColor: color), // Membuat SnackBar dengan isi pesan dan warna latar
     );
   }
+
+  //_______________________
+  // BAGIAN FUNGSI MEMUAT DATA | BERFUNGSI SEBAGAI PENGAMBIL DATA AWAL DAN MEMASUKKANNYA KE DALAM DAFTAR TERPILIH
+  //_______________________
 
   // Fungsi untuk memuat daftar kontak yang sudah dimasukkan ke kategori ini sebelumnya
   Future<void> _loadAlreadyInsertedContacts() async {
@@ -84,6 +108,10 @@ class _SelectContactsScreenState
       _isLoadingSelected = false; // Mengubah status loading menjadi false (selesai loading)
     });
   }
+
+  //_______________________
+  // BAGIAN FUNGSI DIALOG KONFIRMASI | BERFUNGSI SEBAGAI PENAMPIL POP-UP DAN MEMINTA PERSETUJUAN PENGGUNA
+  //_______________________
 
   // Fungsi untuk menampilkan dialog konfirmasi sebelum menyimpan kontak ke kategori
   Future<bool?> _showConfirmDialog() {
@@ -158,6 +186,10 @@ class _SelectContactsScreenState
     );
   }
 
+  //_______________________
+  // BAGIAN FUNGSI PENYIMPANAN DATA | BERFUNGSI SEBAGAI MENYIMPAN KONTAK DAN MEMPERBARUI DATABASE CLOUD
+  //_______________________
+
   // Fungsi utama untuk menyimpan kontak terpilih ke dalam kategori di Firestore
   Future<void> _insertSelectedContacts(
       List<QueryDocumentSnapshot> docs) async { // Menerima daftar semua dokumen kontak
@@ -206,6 +238,10 @@ class _SelectContactsScreenState
       }
     }
   }
+
+  //_______________________
+  // BAGIAN ROOT WIDGET (BUILD) | BERFUNGSI SEBAGAI MERAKIT ANTARMUKA DAN MENAMPILKAN KOMPONEN VISUAL KEPADA PENGGUNA
+  //_______________________
 
   @override
   Widget build(BuildContext context) { // Fungsi utama untuk membangun tampilan UI
