@@ -207,7 +207,7 @@ class _KontakListScreenState extends State<KontakListScreen> {
                   'Are you sure you want to remove?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 19,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
@@ -226,7 +226,14 @@ class _KontakListScreenState extends State<KontakListScreen> {
                             borderRadius: BorderRadius.circular(50),
                           ),
                           alignment: Alignment.center,
-                          child: const Text('NO'),
+                          child: const Text(
+  'NO',
+  style: TextStyle(
+    color: Colors.black, // Mengubah warna tulisan menjadi putih
+    fontWeight: FontWeight.bold, // Membuat tulisan menjadi tebal
+    fontSize: 16, // Menambahkan ukuran font yang lebih besar untuk meningkatkan keterbacaan dan memberikan bobot visual yang setara dengan tombol YES di sebelahnya.
+  ),
+),
                         ),
                       ),
                     ),
@@ -238,11 +245,18 @@ class _KontakListScreenState extends State<KontakListScreen> {
                         child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 14),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF36A9F5),
+                            color: const Color(0xFF42AAFF),
                             borderRadius: BorderRadius.circular(50),
                           ),
                           alignment: Alignment.center,
-                          child: const Text('YES'),
+                          child: const Text(
+  'YES',
+  style: TextStyle(
+    color: Colors.white, // Mengubah warna tulisan menjadi putih
+    fontWeight: FontWeight.bold, // Membuat tulisan menjadi tebal
+    fontSize: 16, // Menambahkan ukuran font yang lebih besar untuk meningkatkan keterbacaan dan memberikan bobot visual yang setara dengan tombol YES di sebelahnya.
+  ),
+),
                         ),
                       ),
                     ),
